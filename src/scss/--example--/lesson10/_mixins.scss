@@ -1,0 +1,93 @@
+/* Міксин відрізняється від плейсхолдера тим, що властивості дублюються в кожен селектор. Усе тому, що значення властивостей міксина можуть бути різними, залежно від переданих аргументів під час виклику @include міксин(аргументи). У той час як властивості та їх значення в плейсхолдері завжди однакові. */
+
+@mixin size($width, $hight: $width) {
+  width: $width;
+  height: $hight;
+  padding: 30px;
+}
+
+%placeholder {
+  font-size: 20px;
+  padding: 20px;
+  width: 480px;
+}
+
+.avatar {
+  @include size(300px);
+}
+
+.icon {
+  @extend %placeholder;
+}
+
+// ==========================================
+@mixin position(
+  $position-type,
+  $position-x,
+  $position-y,
+  $offset-x,
+  $offset-y
+) {
+  position: $position-type;
+  top: $position-x;
+  left: $position-y;
+  transform: translate($offset-x, $offset-y);
+}
+
+.decoration {
+  @include position(absolute, 50%, 50%, -50%, -50%);
+}
+
+// =========================================================
+
+@mixin position(
+  $layer-index,
+  // єдиний обовʼязковий аргумент
+  $position-type: absolute,
+  // встановили значення абсолют за замовчуванням
+  $position-x: 50%,
+  // встановили позицію по горизонталі
+  $position-y: $position-x,
+  // встановили позицію по вертикалі
+  $offset-x: $position-x,
+  // встановили зміщення по горизонталі
+  $offset-y: $offset-x // встановили зміщення по вертикалі
+) {
+  position: $position-type;
+  top: $position-x;
+  left: $position-y;
+  transform: translate(($offset-x * -1), ($offset-y * -1));
+  z-index: $layer-index;
+}
+
+.panel {
+  @include position(100);
+}
+
+// ============================================================
+
+@mixin btn-size($args...) {
+  @debug $args;
+}
+
+@include btn-size(".btn-sm", ".btn-md", "btn-lg");
+
+// ============================================================
+
+// At-rule @content
+@mixin hover {
+  &:not([disabled]):hover {
+    @content;
+  }
+}
+
+/* ===== Usage ===== */
+.button {
+  background-color: white;
+  border: 1px solid darkblue;
+
+  @include hover {
+    color: white;
+    background-color: darkblue;
+  }
+}

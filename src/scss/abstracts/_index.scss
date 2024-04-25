@@ -1,0 +1,4 @@
+@forward "mixin";
+@forward "variable";
+// @forward "variable" hide $active;  буде прихована сутність active
+// @forward "variable" show $active; усі сутності, окрім active будуть приховані

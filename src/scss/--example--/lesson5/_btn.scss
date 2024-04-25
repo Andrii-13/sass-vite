@@ -1,0 +1,23 @@
+@use "btn-scheme" as vars with (
+  $btn-color: yellow,
+  $font-size: 16px
+);
+
+.small-btn {
+  font-size: vars.$font-size;
+  color: vars.$btn-color;
+  background-color: vars.$btn-bgcolor;
+  cursor: vars.$cursor-pointer;
+}
+
+$primary-color: lightgreen;
+
+.second-btn {
+  $secondary-color: rgb(219, 161, 36) !global;
+  background-color: $primary-color;
+}
+
+p {
+  color: $primary-color;
+  background-color: $secondary-color;
+}

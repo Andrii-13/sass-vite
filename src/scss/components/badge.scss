@@ -1,0 +1,21 @@
+/* @use "../util/mixin";
+@use "../util/variable" as v; */
+
+@use "../abstracts" as frwd; //якщо файл _index.scss - в шляху його можна не вказувати
+
+.badge {
+  @include frwd.badge-base();
+  color: frwd.$badge-cl;
+}
+
+.badge-completed {
+  background-color: frwd.$completed;
+}
+
+.badge-ended {
+  background-color: frwd.$ended;
+}
+
+.badge-active {
+  background-color: frwd.$active;
+}

@@ -1,0 +1,100 @@
+/* @import "node_modules/normalize-scss/sass/normalize"; */
+/* @include normalize(); */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+
+  min-height: 100vh;
+
+  font-family: sans-serif;
+}
+
+.section {
+  width: 100%;
+
+  .title {
+    color: teal;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+}
+
+div p {
+  /* Вибере всі <p> елементи, які є нащадками для <div> */
+}
+
+div > p {
+  /* Вибере всі <p> елементи, які є безпосередніми дітьми <div> */
+}
+
+h2 + p {
+  /* Вибере елемент <p>, який є наступним сусідом <h2> */
+}
+
+h2 ~ p {
+  /* Вибере всі <p> елементи, які є наступними сусідами <h2> */
+}
+/* =========================== */
+
+/* .link {
+  color: black;
+
+  &:hover,
+  &:focus {
+    color: red;
+  }
+}
+
+.button {
+  background-color: chocolate;
+  border: 1px solid black;
+
+  .button-icon {
+    fill: green;
+    stroke: yellowgreen;
+  }
+} */
+
+/* ============================== */
+
+// Правило для всієї кнопки
+.button {
+  color: red;
+
+  &:hover,
+  &:focus {
+    color: blue;
+  }
+}
+
+// Правило для іконки
+.button-icon {
+  width: 20px;
+  height: 20px;
+
+  &:hover {
+    width: 50px;
+    height: 50px;
+  }
+
+  // це правило читається так: встановити колір фону для елемента
+  // з класом .button-icon, коли елемент із класом .button у стані ховеру
+  .button:hover & {
+    background-color: teal;
+  }
+}
+
+// Правило для тексту
+.button-label {
+  font-size: 16px;
+
+  .button:hover & {
+    font-size: 20px;
+  }
+}
